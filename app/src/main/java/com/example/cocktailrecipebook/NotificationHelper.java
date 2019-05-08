@@ -9,9 +9,10 @@ import android.graphics.Color;
 import android.util.Log;
 
 public class NotificationHelper extends ContextWrapper {
-    private static final String ID = "come.example.cocktailrecipebook.NotificationHelper";
-    private static final String CHANNEL_NAME = "COCKTAIL_CHANNEL";
+    public static final String ID = "come.example.cocktailrecipebook.NotificationHelper";
+    public static final String CHANNEL_NAME = "COCKTAIL_CHANNEL";
     private NotificationManager manager;
+
     public NotificationHelper(Context base){
         super(base);
         Log.d("Alarmy","entered notifhelper");
@@ -36,7 +37,7 @@ public class NotificationHelper extends ContextWrapper {
         return manager;
     }
     public Notification.Builder getCocktail_channel_notification(String title, String body){
-        return new Notification.Builder(getApplicationContext(),ID)
+        return new Notification.Builder(getApplicationContext(), ID)
                 .setContentText(body)
                 .setContentTitle(title)
                 .setSmallIcon(R.mipmap.ic_launcher_round)

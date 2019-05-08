@@ -4,8 +4,10 @@ import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -21,6 +23,7 @@ import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -229,25 +232,35 @@ public class CocktailTimeActivity extends AppCompatActivity {
         String title = "Cocktail Time";
         String content = "It's Cocktail Time!";
 
-        Notification.Builder builder=helper.getCocktail_channel_notification(title, content);
+        Notification.Builder builder = helper.getCocktail_channel_notification(title, content);
 
-        helper.getManager().notify(new Random().nextInt(),builder.build());
+//        helper.getManager().notify(new Random().nextInt(),builder.build());
 
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.setTimeInMillis(System.currentTimeMillis());
-        System.out.println(selectedHour);
-        System.out.println(selectedMinute);
-        calendar2.set(Calendar.HOUR_OF_DAY, 9);
-        calendar2.set(Calendar.MINUTE, 36);
-        calendar2.set(Calendar.SECOND, 0);
+//        Calendar calendar2 = Calendar.getInstance();
+//        calendar2.setTimeInMillis(System.currentTimeMillis());
+//        System.out.println(selectedHour);
+//        System.out.println(selectedMinute);
+//        calendar2.set(Calendar.HOUR_OF_DAY, 9);
+//        calendar2.set(Calendar.MINUTE, 36);
+//        calendar2.set(Calendar.SECOND, 0);
 
 //        Intent intent = new Intent(getApplicationContext(),NotificationHelper.class);
-        //PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        //AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        System.out.println(calendar2.getTimeInMillis());
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        System.out.println(calendar2.getTimeInMillis());
 
-        manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, pendingIntent);
+//        manager.setRepeating(AlarmManager.RTC_WAKEUP, new Date().getTime() + 5000,
+//                AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+        notificationIntent.putExtra(NotificationHelper.ID, 0);
+        notificationIntent.putExtra(NotificationHelper.CHANNEL_NAME, builder.build());
+        PendingIntent pendingIntent_ = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3000, pendingIntent_);
+
+        Log.d("GARY", "Start");
     }
 
     public void stopNotification(AlarmManager manager, PendingIntent pendingIntent){
