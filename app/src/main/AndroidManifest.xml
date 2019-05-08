@@ -39,7 +39,13 @@
             android:authorities="com.example.cocktailrecipebook"
             android:name="com.example.cocktailrecipebook.data.CocktailContentProvider"
             android:enabled="true"></provider>
-        <receiver android:name=".AlarmReceiver" />
+        <receiver
+            android:name=".AlarmReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.NOTIFY" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
