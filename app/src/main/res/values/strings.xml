@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Cocktail Recipe Book</string>
+    <string name="title_cocktails">Cocktails</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_cocktailtime">Cocktail Time</string>
+    <string name="title_userguide">User Guide</string>
+    <string name="text_cocktailtime">Please set a time for your cocktail time notification:</string>
+    <string name="day_mon">Monday</string>
+    <string name="day_tue">Tuesday</string>
+    <string name="day_wed">Wednesday</string>
+    <string name="day_thu">Thursday</string>
+    <string name="day_fri">Friday</string>
+    <string name="day_sat">Saturday</string>
+    <string name="day_sun">Sunday</string>
+    <string name="txt_on">ON</string>
+    <string name="txt_off">OFF</string>
+    <string name="title_activity_recipe">RecipeActivity</string>
+    <string name="title_activity_favourites">FavouritesActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_user_guide">User Guide</string>
+    <string name="channel_name">Channel</string>
+    <string name="channel_description">Channel for Cocktail Time</string>
+
+    <string name="cocktail_time_notification_title_template">Cocktail time: %1$s</string>
+
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+    <string name="activity_main_title">Cocktails</string>
+    <string name="activity_user_guide_title">User Guide</string>
+    <string name="activity_favourites_title">Favourite Cocktails</string>
+    <string name="activity_cocktail_time_title">Cocktail Time</string>
+    <string name="activity_cocktail_details_title">Details</string>
+</resources>
+
