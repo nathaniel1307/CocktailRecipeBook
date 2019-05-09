@@ -14,9 +14,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // show toast
-//        Toast.makeText(context, "Alarm running", Toast.LENGTH_LONG).show();
-        Log.d("GARY", "Received");
-
+        Toast.makeText(context, "Alarm running", Toast.LENGTH_LONG).show();
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = intent.getParcelableExtra(NotificationHelper.CHANNEL_NAME);
         int id = intent.getIntExtra(NotificationHelper.ID, 0);
